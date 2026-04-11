@@ -1,0 +1,1286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Rathi Pedewala — Akola’s mithai ghar since 1981. Premium pedas, ghee mithai, namkeen &amp; kitchen favourites. Order on WhatsApp." />
+  <title>Rathi Pedewala | Since 1981 · Akola</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preconnect" href="https://images.unsplash.com" crossorigin />
+  <link rel="preconnect" href="https://images.pexels.com" crossorigin />
+  <link rel="preload" as="image" href="images/hero-collage.png" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Great+Vibes&family=Source+Sans+3:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --saffron: #ff9933;
+      --saffron-hot: #ff7a1a;
+      --maroon: #5c1824;
+      --maroon-deep: #3a0f18;
+      --burgundy: #6b1c2e;
+      --charcoal: #2c2826;
+      --stone: #241a1c;
+      --stone-mid: #2d2225;
+      --gold: #d4a84b;
+      --gold-dim: #a67c2c;
+      --gold-light: #f0dfa0;
+      --amber-glow: #e8a84a;
+      --cream: #faf5eb;
+      --cream-warm: #fff3e6;
+      --ink: #1f1816;
+      --whatsapp: #25d366;
+      --radius: 10px;
+      --font-serif: "Cormorant Garamond", Georgia, serif;
+      --font-sans: "Source Sans 3", system-ui, sans-serif;
+      --font-script: "Great Vibes", cursive;
+      /* Hero + menu backdrop: your photo (e.g. store interior blur) or `none` for gradients only */
+      --dark-bg-photo: url("images/image.png");
+      /* Fixed nav + sticky WhatsApp bar — used for in-page anchor scroll */
+      --anchor-scroll-padding: 5.25rem;
+      --anchor-scroll-bottom: 5rem;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: var(--anchor-scroll-padding);
+      scroll-padding-bottom: var(--anchor-scroll-bottom);
+    }
+    body {
+      margin: 0;
+      font-family: var(--font-sans);
+      color: var(--ink);
+      background: var(--cream);
+      line-height: 1.5;
+      font-size: 1rem;
+    }
+
+    .texture-dark {
+      position: relative;
+      isolation: isolate;
+      background-color: #140a0d;
+      /* Photo (optional) + soft colour washes — no repeating grid */
+      background-image:
+        linear-gradient(165deg, rgba(48, 20, 28, 0.88) 0%, rgba(22, 10, 14, 0.92) 42%, rgba(10, 6, 8, 0.94) 100%),
+        radial-gradient(ellipse 100% 70% at 50% -15%, rgba(255, 153, 51, 0.2) 0%, transparent 52%),
+        radial-gradient(ellipse 55% 45% at 95% 60%, rgba(180, 60, 40, 0.18) 0%, transparent 50%),
+        radial-gradient(ellipse 50% 40% at 5% 85%, rgba(212, 168, 75, 0.1) 0%, transparent 48%),
+        var(--dark-bg-photo);
+      background-size: auto, auto, auto, auto, cover;
+      background-position: center, center, center, center, center;
+      background-repeat: no-repeat;
+      background-attachment: scroll;
+    }
+    /* Keep content above any future pseudo overlays */
+    .texture-dark > * {
+      position: relative;
+      z-index: 1;
+    }
+
+    /* ——— Nav ——— */
+    .site-header {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 50;
+      padding: 0.75rem 0;
+    }
+    .site-header.is-scrolled {
+      position: fixed;
+      background: linear-gradient(180deg, rgba(58, 15, 24, 0.97), rgba(36, 26, 28, 0.96));
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(232, 168, 74, 0.22);
+      box-shadow: 0 10px 36px rgba(0, 0, 0, 0.35);
+    }
+    .nav-inner {
+      max-width: 1160px;
+      margin: 0 auto;
+      padding: 0 1.1rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+    .nav-brand {
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+      text-decoration: none;
+      color: inherit;
+      min-width: 0;
+    }
+    .nav-brand:hover .nav-title { color: #fff; }
+    .nav-brand:hover .nav-title-ped { color: var(--gold-light); }
+    .nav-logo-wrap {
+      display: inline-flex;
+      align-items: center;
+      padding: 0.2rem 0.45rem;
+      border-radius: 8px;
+      background: rgba(0, 0, 0, 0.22);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      line-height: 0;
+      flex-shrink: 0;
+    }
+    .nav-title {
+      display: flex;
+      flex-direction: column;
+      gap: 0.12rem;
+      min-width: 0;
+    }
+    .nav-title-main {
+      font-family: var(--font-sans);
+      font-weight: 800;
+      font-size: clamp(1.35rem, 5.5vw, 2.65rem);
+      line-height: 0.98;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      text-shadow:
+        0 2px 18px rgba(0, 0, 0, 0.55),
+        0 0 28px rgba(232, 168, 74, 0.18);
+      white-space: nowrap;
+    }
+    .nav-title-rathi { color: #fff; }
+    .nav-title-ped {
+      background: linear-gradient(135deg, var(--gold-light) 0%, var(--saffron) 55%, var(--saffron-hot) 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      -webkit-text-fill-color: transparent;
+    }
+    .nav-title-sub {
+      font-size: clamp(0.58rem, 1.5vw, 0.72rem);
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: rgba(240, 223, 160, 0.92);
+    }
+    .nav-logo {
+      height: clamp(42px, 8vw, 52px);
+      width: auto;
+      max-width: 200px;
+      object-fit: contain;
+      display: block;
+      filter: drop-shadow(0 2px 10px rgba(0, 0, 0, 0.55));
+    }
+    .nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.35rem 1.1rem;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+    .nav-links a {
+      color: rgba(255, 255, 255, 0.92);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.86rem;
+      letter-spacing: 0.02em;
+    }
+    .nav-links a:hover { color: var(--gold-light); }
+    @media (max-width: 540px) {
+      .nav-title-main {
+        white-space: normal;
+        max-width: 58vw;
+        line-height: 1.02;
+      }
+      .nav-brand { gap: 0.45rem; }
+    }
+
+    /* ——— Hero ——— */
+    .hero-wrap {
+      position: relative;
+      min-height: min(88vh, 820px);
+      display: flex;
+      flex-direction: column;
+      padding-top: 4.25rem;
+    }
+    .hero-inner {
+      flex: 1;
+      max-width: 1160px;
+      margin: 0 auto;
+      padding: 0.75rem 1.1rem 2.25rem;
+      display: grid;
+      gap: 1.75rem;
+      align-items: center;
+      width: 100%;
+    }
+    @media (min-width: 920px) {
+      .hero-inner { grid-template-columns: 1fr 1.18fr; padding-top: 1.25rem; gap: 2rem; align-items: start; }
+    }
+    .hero-visual-col {
+      display: flex;
+      flex-direction: column;
+      align-items: stretch;
+      width: 100%;
+      max-width: min(92vw, 800px);
+      margin-inline: auto;
+      padding: clamp(0.5rem, 2vw, 0.85rem);
+      border-radius: 22px;
+      background:
+        linear-gradient(155deg, rgba(232, 168, 74, 0.14) 0%, transparent 42%),
+        linear-gradient(210deg, rgba(92, 24, 36, 0.45) 0%, rgba(22, 16, 18, 0.65) 100%);
+      border: 1px solid rgba(232, 168, 74, 0.28);
+      box-shadow:
+        0 28px 64px rgba(0, 0, 0, 0.42),
+        0 0 0 1px rgba(255, 255, 255, 0.06) inset,
+        0 1px 0 rgba(255, 230, 180, 0.12) inset;
+    }
+    @media (min-width: 920px) {
+      .hero-visual-col {
+        max-width: none;
+        width: 100%;
+        margin-inline: 0;
+        margin-left: auto;
+      }
+    }
+    .hero-collage-meta {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.4rem 0.75rem;
+      margin-top: 0.85rem;
+      padding: 0 0.35rem 0.15rem;
+    }
+    .hero-collage-meta span {
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.11em;
+      text-transform: uppercase;
+      color: rgba(255, 248, 230, 0.88);
+      padding: 0.28rem 0.55rem;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 153, 51, 0.35);
+      background: linear-gradient(180deg, rgba(92, 24, 36, 0.55), rgba(26, 18, 20, 0.75));
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
+    }
+    .hero-brand-row {
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
+      margin-bottom: 1rem;
+    }
+    .hero-seal {
+      width: 64px;
+      height: 64px;
+      object-fit: contain;
+      flex-shrink: 0;
+      filter: drop-shadow(0 4px 16px rgba(0, 0, 0, 0.45));
+    }
+    .hero-brand-stack {
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
+      min-width: 0;
+    }
+    .hero-dev {
+      height: clamp(28px, 5vw, 36px);
+      width: auto;
+      max-width: 200px;
+      object-fit: contain;
+      object-position: left center;
+      filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.35));
+    }
+    .hero-legacy-strip {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 0.35rem 0.65rem;
+    }
+    .hero-since {
+      display: inline-block;
+      font-size: 0.68rem;
+      font-weight: 800;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--maroon-deep);
+      background: linear-gradient(135deg, var(--gold-light), var(--gold));
+      padding: 0.28rem 0.55rem;
+      border-radius: 4px;
+      border: 1px solid rgba(255, 255, 255, 0.35);
+      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.25);
+    }
+    .hero-place {
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: rgba(255, 255, 255, 0.72);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+    .hero-gold-rule {
+      width: 48px;
+      height: 2px;
+      background: linear-gradient(90deg, var(--gold), var(--gold-light), transparent);
+      border-radius: 2px;
+      margin-bottom: 0.65rem;
+    }
+    .hero-script {
+      font-family: var(--font-script);
+      font-size: clamp(1.85rem, 4.5vw, 2.75rem);
+      color: var(--gold-light);
+      margin: 0 0 0.4rem;
+      line-height: 1.15;
+      text-shadow: 0 2px 20px rgba(0, 0, 0, 0.4);
+    }
+    .hero-inner h1.hero-signage {
+      font-family: var(--font-sans);
+      font-size: clamp(2.35rem, 7.5vw, 4.35rem);
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      line-height: 0.98;
+      margin: 0 0 0.55rem;
+      color: #fff;
+      text-shadow:
+        0 4px 28px rgba(0, 0, 0, 0.55),
+        0 0 48px rgba(232, 168, 74, 0.2);
+    }
+    .hero-signage-rathi { color: #fff; }
+    .hero-signage-ped {
+      background: linear-gradient(90deg, var(--gold-light), var(--saffron) 40%, var(--amber-glow));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      -webkit-text-fill-color: transparent;
+    }
+    .hero-inner .tagline {
+      font-size: 0.95rem;
+      color: rgba(255, 255, 255, 0.72);
+      max-width: 34ch;
+      margin: 0 0 1.1rem;
+      line-height: 1.55;
+    }
+    .hero-stats {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem 1rem;
+      margin-bottom: 1.15rem;
+      padding: 0.55rem 0;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    .hero-stat {
+      display: flex;
+      flex-direction: column;
+      gap: 0.08rem;
+    }
+    .hero-stat strong {
+      font-family: var(--font-serif);
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: var(--gold-light);
+      line-height: 1;
+    }
+    .hero-stat span {
+      font-size: 0.65rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: rgba(255, 255, 255, 0.48);
+    }
+    .hero-cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.55rem;
+    }
+    .btn-solid {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.72rem 1.45rem;
+      border-radius: 8px;
+      background: linear-gradient(180deg, var(--saffron-hot), var(--maroon) 55%, #2d1018);
+      color: #fff;
+      font-weight: 700;
+      font-size: 0.92rem;
+      text-decoration: none;
+      border: 1px solid rgba(255, 200, 120, 0.35);
+      box-shadow: 0 8px 24px rgba(92, 24, 36, 0.45), 0 0 20px rgba(255, 153, 51, 0.12);
+    }
+    .btn-solid:hover { filter: brightness(1.08); }
+    .btn-outline-light {
+      display: inline-flex;
+      padding: 0.7rem 1.25rem;
+      border-radius: 8px;
+      border: 2px solid rgba(201, 162, 39, 0.65);
+      color: var(--gold-light);
+      font-weight: 600;
+      font-size: 0.9rem;
+      text-decoration: none;
+      background: rgba(0, 0, 0, 0.15);
+    }
+    .btn-outline-light:hover {
+      background: rgba(201, 162, 39, 0.12);
+      color: #fff;
+    }
+
+    .jharokha-hero {
+      position: relative;
+      padding: 14px;
+      border-radius: 4px 4px 14px 14px;
+      background: linear-gradient(160deg, rgba(201, 162, 39, 0.35), rgba(74, 14, 28, 0.5));
+      box-shadow:
+        0 24px 60px rgba(0, 0, 0, 0.45),
+        inset 0 0 0 1px rgba(255, 255, 255, 0.12);
+    }
+    .jharokha-hero::before {
+      content: "";
+      position: absolute;
+      inset: 8px 8px auto 8px;
+      height: 52px;
+      border-radius: 50% 50% 0 0 / 100% 100% 0 0;
+      border: 2px solid rgba(232, 212, 139, 0.45);
+      border-bottom: none;
+      pointer-events: none;
+    }
+    .jharokha-hero--collage {
+      padding: clamp(6px, 1.2vw, 10px);
+      border-radius: 16px;
+      background: linear-gradient(165deg, rgba(240, 223, 160, 0.12) 0%, rgba(92, 24, 36, 0.4) 45%, rgba(26, 18, 20, 0.85) 100%);
+      box-shadow:
+        0 16px 48px rgba(0, 0, 0, 0.38),
+        0 0 0 1px rgba(255, 200, 120, 0.15) inset,
+        inset 0 -2px 20px rgba(0, 0, 0, 0.2);
+    }
+    .jharokha-hero--collage::before {
+      display: none;
+    }
+    .jharokha-hero-inner {
+      margin-top: 42px;
+      border-radius: 12px;
+      overflow: hidden;
+      border: 3px double rgba(255, 255, 255, 0.18);
+      aspect-ratio: 4/3;
+      box-shadow: inset 0 0 40px rgba(0, 0, 0, 0.25);
+    }
+    .jharokha-hero--collage .jharokha-hero-inner {
+      margin-top: 0;
+      aspect-ratio: unset;
+      height: auto;
+      border-radius: 14px;
+      border: 1px solid rgba(240, 223, 160, 0.32);
+      box-shadow:
+        0 12px 36px rgba(0, 0, 0, 0.5),
+        inset 0 0 0 1px rgba(0, 0, 0, 0.35);
+      background: linear-gradient(180deg, #2c2426, #1a1416);
+    }
+    .jharokha-hero-inner img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      display: block;
+    }
+    .jharokha-hero--collage .jharokha-hero-inner img.hero-collage-img {
+      height: auto;
+      max-height: min(85vh, 960px);
+      width: 100%;
+      object-fit: contain;
+      object-position: center top;
+      display: block;
+    }
+
+    /* ——— Promo strip ——— */
+    .promo-strip {
+      background: linear-gradient(135deg, var(--cream-warm), #f5e6d6 50%, #edd9c4);
+      border-top: 1px solid rgba(212, 168, 75, 0.35);
+      border-bottom: 1px solid rgba(92, 24, 36, 0.15);
+      padding: 1.35rem 1.1rem;
+    }
+    .promo-inner {
+      max-width: 1160px;
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+    .promo-inner p {
+      margin: 0;
+      font-family: var(--font-serif);
+      font-size: 1.35rem;
+      font-weight: 600;
+      color: var(--maroon);
+    }
+    .promo-inner .btn-solid { font-size: 0.85rem; padding: 0.55rem 1.1rem; }
+
+    /* ——— Menu panel (dark) ——— */
+    .menu-shell {
+      padding: 2.75rem 0 3.25rem;
+    }
+    .menu-shell .section-head {
+      text-align: center;
+      margin-bottom: 1.25rem;
+    }
+    .menu-shell .section-head h2 {
+      font-family: var(--font-serif);
+      font-size: clamp(1.85rem, 4vw, 2.5rem);
+      color: #fff;
+      margin: 0 0 0.35rem;
+    }
+    .menu-shell .section-head p {
+      margin: 0;
+      color: rgba(255, 255, 255, 0.62);
+      font-size: 0.88rem;
+      max-width: 36rem;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .tab-scroll {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.4rem;
+      max-width: 1160px;
+      margin: 0 auto 1.25rem;
+      padding: 0 1rem;
+    }
+    .tab-scroll button {
+      font-family: var(--font-sans);
+      cursor: pointer;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      background: rgba(255, 255, 255, 0.04);
+      color: rgba(255, 255, 255, 0.85);
+      padding: 0.38rem 0.75rem;
+      border-radius: 999px;
+      font-weight: 600;
+      font-size: 0.72rem;
+      white-space: nowrap;
+    }
+    .tab-scroll button[aria-pressed="true"] {
+      background: linear-gradient(135deg, var(--maroon), #6b1520);
+      border-color: rgba(201, 162, 39, 0.45);
+      color: #fff;
+    }
+
+    .menu-compact-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(148px, 1fr));
+      gap: 0.55rem;
+      max-width: 1160px;
+      margin: 0 auto;
+      padding: 0 1rem;
+    }
+    @media (min-width: 520px) {
+      .menu-compact-grid { grid-template-columns: repeat(auto-fill, minmax(168px, 1fr)); gap: 0.65rem; }
+    }
+
+    .mc-card {
+      background: linear-gradient(165deg, #2a1f26 0%, #1a1218 100%);
+      border: 1px solid rgba(201, 162, 39, 0.14);
+      border-radius: var(--radius);
+      padding: 0.45rem 0.5rem 0.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.28rem;
+      transition: transform 0.18s ease, border-color 0.18s ease, box-shadow 0.18s ease;
+    }
+    .mc-card:hover {
+      transform: translateY(-2px);
+      border-color: rgba(201, 162, 39, 0.35);
+      box-shadow: 0 10px 28px rgba(0, 0, 0, 0.35);
+    }
+    .mc-card[hidden] { display: none !important; }
+
+    .mc-visual {
+      height: 76px;
+      border-radius: 6px 6px 9px 9px;
+      background: linear-gradient(180deg, #352830, #1e161c);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      position: relative;
+      overflow: hidden;
+    }
+    .mc-photo {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: 0;
+    }
+    .mc-photo-shade {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      background: linear-gradient(180deg, rgba(0, 0, 0, 0.08) 0%, rgba(22, 16, 24, 0.55) 100%);
+      pointer-events: none;
+    }
+    .mc-visual::before {
+      content: "";
+      position: absolute;
+      top: 3px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 68%;
+      height: 18px;
+      border-radius: 50% 50% 0 0 / 100% 100% 0 0;
+      border: 1px solid rgba(201, 162, 39, 0.35);
+      border-bottom: none;
+      z-index: 2;
+      pointer-events: none;
+    }
+    .mc-visual.is-fallback .mc-photo { display: none; }
+    .mc-initial {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      display: none;
+      place-items: center;
+      font-family: var(--font-serif);
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: var(--gold);
+      padding-top: 10px;
+      background: radial-gradient(ellipse at 50% 0%, rgba(201, 162, 39, 0.2), transparent 70%);
+    }
+    .mc-visual.is-fallback .mc-initial { display: grid; }
+
+    .mc-row-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.25rem;
+    }
+    .mc-price {
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: var(--gold-light);
+    }
+    .mc-info {
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      background: rgba(0, 0, 0, 0.2);
+      color: rgba(255, 255, 255, 0.55);
+      font-size: 0.65rem;
+      font-weight: 700;
+      display: grid;
+      place-items: center;
+      cursor: help;
+      flex-shrink: 0;
+    }
+
+    .mc-row-bottom {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 0.35rem;
+    }
+    .mc-name {
+      font-size: 0.76rem;
+      font-weight: 600;
+      color: rgba(255, 255, 255, 0.95);
+      line-height: 1.25;
+      margin: 0;
+      flex: 1;
+      min-width: 0;
+    }
+    .mc-badge {
+      position: absolute;
+      top: 4px;
+      right: 4px;
+      z-index: 4;
+      font-size: 0.55rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      background: linear-gradient(135deg, var(--saffron), #cc5500);
+      color: #fff;
+      padding: 0.12rem 0.28rem;
+      border-radius: 3px;
+      line-height: 1;
+    }
+    .mc-visual { position: relative; }
+
+    .mc-order {
+      flex-shrink: 0;
+      padding: 0.22rem 0.45rem;
+      border-radius: 5px;
+      background: rgba(255, 153, 51, 0.2);
+      border: 1px solid rgba(255, 153, 51, 0.45);
+      color: #ffcc99;
+      font-size: 0.62rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+      text-decoration: none;
+      white-space: nowrap;
+    }
+    .mc-order:hover {
+      background: rgba(255, 153, 51, 0.35);
+      color: #fff;
+    }
+
+    /* ——— Heritage ——— */
+    .heritage {
+      padding: 3rem 1.1rem;
+      background: var(--cream);
+    }
+    .section-title-light {
+      font-family: var(--font-serif);
+      font-size: clamp(1.85rem, 4vw, 2.45rem);
+      color: var(--maroon);
+      text-align: center;
+      margin: 0 0 0.35rem;
+    }
+    .section-sub-light {
+      text-align: center;
+      color: #5c504a;
+      max-width: 40rem;
+      margin: 0 auto 1.75rem;
+      font-size: 0.98rem;
+    }
+    .parchment {
+      max-width: 700px;
+      margin: 0 auto;
+      padding: 2rem 1.5rem;
+      border-radius: var(--radius);
+      background: #f0e4d4;
+      background-image: linear-gradient(rgba(74, 14, 28, 0.03) 1px, transparent 1px);
+      background-size: 100% 1.25rem;
+      border: 1px solid rgba(201, 162, 39, 0.4);
+      box-shadow: 0 12px 40px rgba(45, 6, 15, 0.08);
+    }
+    .parchment p { margin: 0 0 1rem; color: #3d2f28; }
+    .parchment p:last-child { margin-bottom: 0; }
+
+    /* ——— Festive ——— */
+    .festive {
+      padding: 3rem 1.1rem;
+      background: linear-gradient(180deg, #faf6ef, #f0e8dc);
+    }
+    .festive-wrap {
+      display: grid;
+      gap: 1rem;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      max-width: 1160px;
+      margin: 0 auto;
+    }
+    .festive-card {
+      position: relative;
+      border-radius: var(--radius);
+      padding: 1.5rem 1.25rem;
+      min-height: 170px;
+      overflow: hidden;
+      color: #fff;
+    }
+    .festive-card:nth-child(1) { background: linear-gradient(135deg, var(--maroon-deep), #5c1018 55%, var(--saffron)); }
+    .festive-card:nth-child(2) { background: linear-gradient(135deg, #142920, #2a5c40 50%, var(--gold-dim)); }
+    .festive-card:nth-child(3) { background: linear-gradient(135deg, #2d1040, #5c2a78 45%, #c94b7d); }
+    .festive-card h3 { font-family: var(--font-serif); font-size: 1.65rem; margin: 0 0 0.4rem; }
+    .festive-card p { margin: 0; opacity: 0.95; font-size: 0.92rem; }
+
+    /* ——— Stories ——— */
+    .stories {
+      padding: 3rem 1.1rem;
+      background: var(--cream);
+    }
+    .blog-grid {
+      display: grid;
+      gap: 1rem;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      max-width: 1160px;
+      margin: 0 auto;
+    }
+    .blog-card {
+      background: #fff;
+      border-radius: var(--radius);
+      border: 1px solid rgba(201, 162, 39, 0.3);
+      overflow: hidden;
+      box-shadow: 0 14px 40px rgba(45, 6, 15, 0.08);
+    }
+    .blog-card-top {
+      height: 100px;
+      background: linear-gradient(120deg, var(--maroon-deep), var(--saffron));
+      display: flex;
+      align-items: flex-end;
+      padding: 0.75rem 1rem;
+    }
+    .blog-card-top span {
+      font-size: 0.68rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: rgba(255, 255, 255, 0.9);
+    }
+    .blog-card-body { padding: 1rem 1.1rem 1.15rem; }
+    .blog-card-body h3 {
+      font-family: var(--font-serif);
+      font-size: 1.2rem;
+      margin: 0 0 0.4rem;
+      color: var(--maroon);
+    }
+    .blog-card-body p { margin: 0; font-size: 0.9rem; color: #5c504a; }
+
+    /* ——— Visit ——— */
+    .visit {
+      padding: 3rem 1.1rem;
+      background: #fff;
+    }
+    .contact-grid {
+      display: grid;
+      gap: 1.25rem;
+      max-width: 1160px;
+      margin: 0 auto;
+      grid-template-columns: 1fr;
+    }
+    @media (min-width: 820px) {
+      .contact-grid { grid-template-columns: 1fr 1.12fr; }
+    }
+    .contact-card {
+      background: var(--cream);
+      padding: 1.35rem 1.2rem;
+      border-radius: var(--radius);
+      border: 1px solid rgba(201, 162, 39, 0.35);
+    }
+    .contact-card h3 {
+      font-family: var(--font-serif);
+      font-size: 1.35rem;
+      margin: 0 0 0.85rem;
+      color: var(--maroon);
+    }
+    .contact-card a { color: var(--maroon); font-weight: 600; text-decoration: none; }
+    .contact-card a:hover { color: var(--saffron); }
+    .map-embed {
+      border-radius: var(--radius);
+      overflow: hidden;
+      border: 3px double rgba(201, 162, 39, 0.45);
+      min-height: 260px;
+    }
+    .map-embed iframe { width: 100%; height: 300px; border: 0; display: block; }
+
+    footer {
+      background: var(--maroon-deep);
+      color: rgba(255, 255, 255, 0.88);
+      padding: 2.25rem 1.1rem 6.5rem;
+    }
+    @media (min-width: 640px) { footer { padding-bottom: 4.5rem; } }
+    .footer-inner {
+      max-width: 1160px;
+      margin: 0 auto;
+      display: grid;
+      gap: 1.25rem;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    }
+    .footer-inner h4 {
+      font-family: var(--font-serif);
+      font-size: 1.1rem;
+      margin: 0 0 0.5rem;
+      color: var(--gold-light);
+    }
+    .footer-inner ul { list-style: none; margin: 0; padding: 0; }
+    .footer-inner li { margin-bottom: 0.35rem; }
+    .footer-inner a { color: rgba(255, 255, 255, 0.88); text-decoration: none; }
+    .footer-inner a:hover { color: var(--saffron); }
+    .footer-bottom {
+      max-width: 1160px;
+      margin: 1.75rem auto 0;
+      padding-top: 1rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      font-size: 0.82rem;
+      color: rgba(255, 255, 255, 0.55);
+      text-align: center;
+    }
+
+    .order-sticky {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      z-index: 60;
+      padding: 0.55rem 1rem calc(0.55rem + env(safe-area-inset-bottom));
+      background: linear-gradient(180deg, rgba(20, 8, 10, 0.95), rgba(26, 10, 13, 0.98));
+      border-top: 1px solid rgba(201, 162, 39, 0.25);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 0.65rem;
+    }
+    .order-sticky a {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.58rem 1.2rem;
+      border-radius: 999px;
+      background: var(--whatsapp);
+      color: #fff;
+      font-weight: 700;
+      text-decoration: none;
+      font-size: 0.88rem;
+    }
+    .order-sticky .hint {
+      color: rgba(255, 255, 255, 0.75);
+      font-size: 0.75rem;
+      display: none;
+    }
+    @media (min-width: 560px) { .order-sticky .hint { display: inline; } }
+
+    .wa-float {
+      position: fixed;
+      bottom: 5rem;
+      right: 0.85rem;
+      z-index: 55;
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      background: var(--whatsapp);
+      color: #fff;
+      display: grid;
+      place-items: center;
+      box-shadow: 0 8px 28px rgba(37, 211, 102, 0.45);
+      text-decoration: none;
+    }
+    .wa-float:hover { transform: scale(1.05); }
+    .wa-float svg { width: 26px; height: 26px; }
+
+    body { padding-bottom: 4.25rem; }
+  </style>
+</head>
+<body>
+  <header class="site-header" id="hdr">
+    <nav class="nav-inner" aria-label="Main">
+      <a href="#top" class="nav-brand" aria-label="Rathi Pedewala home">
+        <span class="nav-logo-wrap">
+          <img class="nav-logo" src="images/logo-wordmark.png" alt="" width="180" height="40" onerror="this.src='images/logo-devanagari.png'" />
+        </span>
+        <span class="nav-title">
+          <span class="nav-title-main"><span class="nav-title-rathi">Rathi</span> <span class="nav-title-ped">Pedewala</span></span>
+          <span class="nav-title-sub">Since 1981 · Akola</span>
+        </span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="#menu">Menu</a></li>
+        <li><a href="#heritage">Heritage</a></li>
+        <li><a href="#festive">Festive</a></li>
+        <li><a href="#stories">Stories</a></li>
+        <li><a href="#visit">Visit</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero-wrap texture-dark" id="top">
+      <div class="hero-inner">
+        <div>
+          
+          <div class="hero-gold-rule" aria-hidden="true"></div>
+          <p class="hero-script">A legacy in every bite...</p>
+          <p class="tagline">Pure ghee, cow milk, and recipes trusted since <strong style="color:var(--gold-light);font-weight:700;">1981</strong> — sweets, namkeen, snacks &amp; kitchen favourites from our family to your thali.</p>
+          <div class="hero-stats" aria-label="Highlights">
+            <div class="hero-stat">
+              <strong id="legacy-years">45+</strong>
+              <span>Years crafting</span>
+            </div>
+            <div class="hero-stat">
+              <strong>1981</strong>
+              <span>Established</span>
+            </div>
+            <div class="hero-stat">
+              <strong>100+</strong>
+              <span>Menu picks</span>
+            </div>
+          </div>
+          <div class="hero-cta-row">
+            <a class="btn-solid" href="https://wa.me/917242450049?text=Hi%20Rathi%20Pedewala%2C%20I%27d%20like%20to%20place%20an%20order." rel="noopener noreferrer" target="_blank">Order on WhatsApp</a>
+            <a class="btn-outline-light" href="#menu">View menu</a>
+          </div>
+          <br>
+          <div class="hero-brand-row">
+            <img class="hero-seal" src="images/logo-seal-mandana.png" alt="" width="72" height="72" decoding="async" onerror="this.style.visibility='hidden';this.style.width='0';" />
+            <div class="hero-brand-stack">
+              <div class="hero-legacy-strip">
+                <span class="hero-since">Since 1981</span>
+                <span class="hero-place">Akola · Maharashtra</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="hero-visual-col">
+          <div class="jharokha-hero jharokha-hero--collage" role="group" aria-label="Rathi Pedewala collage: dining hall, storefront, and products">
+              <img
+                class="hero-collage-img"
+                src="images/image.png"
+                alt="Rathi Pedewala: modern dining hall ceiling, storefront with signage, and packaged mithai &amp; namkeen"
+                width="300"
+                height="300"
+                loading="eager"
+                decoding="async"
+                fetchpriority="high"
+                onerror="this.onerror=null;this.src='images/hero-store-interior.png';"
+              />
+              <img
+                class="hero-collage-img"
+                src="images/hero-storefront.png"
+                alt="Rathi Pedewala: modern dining hall ceiling, storefront with signage, and packaged mithai &amp; namkeen"
+                width="230"
+                height="300"
+                loading="eager"
+                decoding="async"
+                fetchpriority="high"
+                onerror="this.onerror=null;this.src='images/hero-store-interior.png';"
+              />
+          </div>
+          <div class="hero-collage-meta" aria-hidden="true">
+            <span>Experience</span>
+            <span>Our store</span>
+            <span>From our counter</span>
+          </div>
+        </div>
+        
+      </div>
+    </section>
+
+    <div class="promo-strip">
+      <div class="promo-inner">
+        <p><span style="opacity:0.85;">Since 1981 ·</span> Festive boxes &amp; corporate gifting — tell us your occasion.</p>
+        <a class="btn-solid" href="https://wa.me/917242450049?text=Hi%2C%20I%27d%20like%20a%20festive%20%2F%20gift%20box%20quote." rel="noopener noreferrer" target="_blank">Get a quote</a>
+      </div>
+    </div>
+
+    <section class="menu-shell texture-dark" id="menu" aria-labelledby="menu-h">
+      <div class="section-head">
+        <h2 id="menu-h">The menu</h2>
+        <p>Tap <strong style="color:#e8d48b;">Order</strong> to WhatsApp the item name. Photos are <strong style="color:rgba(255,255,255,0.85);">representative</strong> (stock by category) — your tray may vary. Prices: confirm on WhatsApp.</p>
+      </div>
+      <div class="tab-scroll" id="menu-tabs" role="tablist" aria-label="Menu category"></div>
+      <div class="menu-compact-grid" id="menu-grid"></div>
+    </section>
+
+    <section class="heritage" id="heritage" aria-labelledby="her-h">
+      <h2 class="section-title-light" id="her-h">Our Heritage</h2>
+      <p class="section-sub-light">Serving Akola since <strong>1981</strong> — one family’s promise of purity.</p>
+      <div class="parchment">
+        <p>In <strong>1981</strong> we opened our doors with a simple vow: milk, ghee, and patience above all. The Rathi name became synonymous with the peda — and with the trust of neighbours who returned every festival for the same slow-cooked sweetness.</p>
+        <p>More than four decades on, we still batch carefully, source honestly, and let mithai rest until aroma and grain feel right — because legacy is not a slogan on a box; it is what you taste on the tongue.</p>
+      </div>
+    </section>
+
+    <section class="festive" id="festive" aria-labelledby="fest-h">
+      <h2 class="section-title-light" id="fest-h">Festive Specials</h2>
+      <p class="section-sub-light">Curated boxes for Diwali, Rakhi, Holi &amp; more — we pack to your budget.</p>
+      <div class="festive-wrap">
+        <article class="festive-card">
+          <h3>Diwali Radiance</h3>
+          <p>Pedas, kaju katli &amp; namkeen pairings in tiered gift boxes with foil accents.</p>
+        </article>
+        <article class="festive-card">
+          <h3>Rakhi Threads</h3>
+          <p>Compact hampers: sweet stacks, chikki bites &amp; sibling-friendly portions.</p>
+        </article>
+        <article class="festive-card">
+          <h3>Holi &amp; Ghee</h3>
+          <p>Thandai-ready ladoos, gujiya pre-orders &amp; ghee-rich classics for the feast after.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="stories" id="stories" aria-labelledby="story-h">
+      <h2 class="section-title-light" id="story-h">Sweet Stories</h2>
+      <p class="section-sub-light">Craft, purity &amp; the Mandana state of mind.</p>
+      <div class="blog-grid">
+        <article class="blog-card">
+          <div class="blog-card-top"><span>Heritage</span></div>
+          <div class="blog-card-body">
+            <h3>The journey of the peda</h3>
+            <p>From prasad to celebration centrepiece — why texture and slow milk tell the truth.</p>
+          </div>
+        </article>
+        <article class="blog-card">
+          <div class="blog-card-top"><span>Purity</span></div>
+          <div class="blog-card-body">
+            <h3>A2 Desi Ghee in every batch</h3>
+            <p>Ghee that smells like childhood — stable on heat, honest on the palate.</p>
+          </div>
+        </article>
+        <article class="blog-card">
+          <div class="blog-card-top"><span>Craft</span></div>
+          <div class="blog-card-body">
+            <h3>Mandana on the mind</h3>
+            <p>Symmetry and patience — from cooling trays to diamond cuts and gift boxes.</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="visit" id="visit" aria-labelledby="visit-h">
+      <h2 class="section-title-light" id="visit-h">Contact &amp; Visit</h2>
+      <p class="section-sub-light">Kedia Plot, Jatharpeth / Convent Road, Akola Locality, Akola, Maharashtra 444001</p>
+      <div class="contact-grid">
+        <div class="contact-card">
+          <h3>Reach us</h3>
+          <p style="margin: 0 0 0.65rem;"><strong>Phone</strong><br /><a href="tel:+917242450049">+91 72424 50049</a></p>
+          <p style="margin: 0 0 0.65rem;"><strong>WhatsApp</strong><br /><a href="https://wa.me/917242450049" rel="noopener noreferrer" target="_blank">Orders &amp; custom boxes</a></p>
+          <p style="margin: 0;"><strong>Instagram</strong><br /><a href="https://www.instagram.com/rathi_pedewala/" rel="noopener noreferrer" target="_blank">@rathi_pedewala</a></p>
+        </div>
+        <div class="map-embed">
+          <iframe title="Rathi Pedewala on Google Maps" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://maps.google.com/maps?q=20.7122322%2C77.0113603&amp;hl=en&amp;z=16&amp;output=embed" allowfullscreen></iframe>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+      <div>
+        <h4>Rathi Pedewala</h4>
+        <p style="margin: 0; font-size: 0.88rem; color: rgba(255,255,255,0.72);">Since 1981 · Mithai · Pedas · Namkeen · Kitchen — Akola.</p>
+      </div>
+      <div>
+        <h4>Connect</h4>
+        <ul>
+          <li><a href="https://www.instagram.com/rathi_pedewala/" rel="noopener noreferrer" target="_blank">Instagram</a></li>
+          <li><a href="https://wa.me/917242450049" rel="noopener noreferrer" target="_blank">WhatsApp</a></li>
+          <li><a href="tel:+917242450049">Call</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Hours</h4>
+        <p style="margin: 0; font-size: 0.88rem; color: rgba(255,255,255,0.72);">Typically 7am – 11pm — confirm on WhatsApp before you travel.</p>
+      </div>
+    </div>
+    <p class="footer-bottom">© <span id="y"></span> Rathi Pedewala · Est. 1981 · Ghee, not shortcuts.</p>
+  </footer>
+
+  <div class="order-sticky">
+    <span class="hint">Fresh batches —</span>
+    <a href="https://wa.me/917242450049?text=Hi%20Rathi%20Pedewala%2C%20I%27d%20like%20to%20place%20an%20order." rel="noopener noreferrer" target="_blank">Order via WhatsApp</a>
+  </div>
+
+  <a class="wa-float" href="https://wa.me/917242450049?text=Hi%20Rathi%20Pedewala%2C%20I%27d%20like%20to%20place%20an%20order." rel="noopener noreferrer" target="_blank" aria-label="WhatsApp order">
+    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.435 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+  </a>
+
+  <script src="menu-items.js"></script>
+  <script>
+    document.getElementById("y").textContent = new Date().getFullYear();
+    (function legacyYears() {
+      var el = document.getElementById("legacy-years");
+      if (!el) return;
+      var y = new Date().getFullYear() - 1981;
+      el.textContent = (y < 1 ? "1" : y) + "+";
+    })();
+
+    (function headerScroll() {
+      var hdr = document.getElementById("hdr");
+      var hero = document.querySelector(".hero-wrap");
+      function tick() {
+        var h = hero ? hero.offsetHeight * 0.5 : 80;
+        hdr.classList.toggle("is-scrolled", window.scrollY > h);
+      }
+      tick();
+      window.addEventListener("scroll", tick, { passive: true });
+    })();
+
+    (function inPageNav() {
+      var nav = document.querySelector(".nav-inner");
+      if (!nav) return;
+      nav.addEventListener("click", function (e) {
+        var a = e.target.closest("a[href^='#']");
+        if (!a || !nav.contains(a)) return;
+        var hash = a.getAttribute("href");
+        if (!hash || hash === "#") return;
+        var id = decodeURIComponent(hash.slice(1));
+        var el = document.getElementById(id);
+        if (!el) return;
+        e.preventDefault();
+        el.scrollIntoView({ behavior: "smooth", block: "start" });
+        if (history.replaceState) {
+          history.replaceState(null, "", hash);
+        }
+      });
+    })();
+
+    (function renderMenu() {
+      var tabs = document.getElementById("menu-tabs");
+      var grid = document.getElementById("menu-grid");
+      var cats = window.RP_MENU_CATS || [];
+      var items = window.RP_MENU || [];
+      var pickPhoto = window.rpPickMenuPhoto || function () { return ""; };
+      var active = "all";
+
+      function waUrl(name) {
+        var msg = "Hi Rathi Pedewala, I'd like to order: " + name;
+        return "https://wa.me/917242450049?text=" + encodeURIComponent(msg);
+      }
+
+      function initialFrom(name) {
+        var m = name.match(/[A-Za-z0-9\u0900-\u097F]/);
+        return m ? m[0].toUpperCase() : "र";
+      }
+
+      cats.forEach(function (cat, i) {
+        var b = document.createElement("button");
+        b.type = "button";
+        b.setAttribute("role", "tab");
+        b.textContent = cat.label;
+        b.setAttribute("data-cat", cat.id);
+        b.setAttribute("aria-pressed", cat.id === "all" ? "true" : "false");
+        b.addEventListener("click", function () {
+          active = cat.id;
+          cats.forEach(function (_, j) {
+            tabs.children[j].setAttribute("aria-pressed", cats[j].id === active ? "true" : "false");
+          });
+          grid.querySelectorAll(".mc-card").forEach(function (card) {
+            var c = card.getAttribute("data-c");
+            card.hidden = active !== "all" && c !== active;
+          });
+        });
+        tabs.appendChild(b);
+      });
+
+      items.forEach(function (it) {
+        var card = document.createElement("article");
+        card.className = "mc-card";
+        card.setAttribute("data-c", it.c);
+        var titleTip = it.n + (it.w ? " · " + it.w : "") + (it.p ? " · ₹" + it.p : " · Ask price on WhatsApp");
+        function escAttr(t) {
+          return String(t).replace(/&/g, "&amp;").replace(/"/g, "&quot;").replace(/</g, "&lt;");
+        }
+        function escHtml(t) {
+          return String(t).replace(/&/g, "&amp;").replace(/</g, "&lt;");
+        }
+
+        var priceText = it.p ? "₹" + it.p : "—";
+        var photo = it.u || pickPhoto(it.c, it.n);
+        var imgHtml = photo
+          ? '<img class="mc-photo" src="' + escAttr(photo) + '" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer">'
+          : "";
+
+        card.innerHTML =
+          '<div class="mc-visual' + (photo ? "" : " is-fallback") + '">' +
+          imgHtml +
+          '<div class="mc-photo-shade" aria-hidden="true"></div>' +
+          (it.s ? '<span class="mc-badge">Top</span>' : '') +
+          '<span class="mc-initial" aria-hidden="true">' + escHtml(initialFrom(it.n)) + "</span></div>" +
+          '<div class="mc-row-top">' +
+          '<span class="mc-price">' + priceText + '</span>' +
+          '<span class="mc-info" role="img" aria-label="Details" title="' +
+          escAttr(titleTip) +
+          '">i</span></div>' +
+          '<div class="mc-row-bottom">' +
+          "<h3 class=\"mc-name\">" +
+          escHtml(it.n) +
+          (it.w ? ' <span style="opacity:.55;font-weight:500;font-size:0.68rem;">· ' + escHtml(it.w) + "</span>" : "") +
+          "</h3>" +
+          '<a class="mc-order" href="' +
+          waUrl(it.n + (it.w ? " (" + it.w + ")" : "")) +
+          '" rel="noopener noreferrer" target="_blank">Order</a></div>';
+
+        grid.appendChild(card);
+        var visEl = card.querySelector(".mc-visual");
+        var photoEl = card.querySelector(".mc-photo");
+        if (photoEl && visEl) {
+          photoEl.addEventListener("error", function () {
+            visEl.classList.add("is-fallback");
+            photoEl.remove();
+          });
+        }
+      });
+    })();
+  </script>
+</body>
+</html>
