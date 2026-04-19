@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="preconnect" href="https://images.unsplash.com" crossorigin />
   <link rel="preconnect" href="https://images.pexels.com" crossorigin />
-  <link rel="preload" as="image" href="image.png" />
+  <link rel="preload" as="image" href="images/image.png" />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Great+Vibes&family=Source+Sans+3:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <style>
     :root {
@@ -48,7 +48,7 @@
       --font-sans: "Source Sans 3", system-ui, sans-serif;
       --font-script: "Great Vibes", cursive;
       /* Faint store photo under a light wash — set to `none` for gradients only */
-      --texture-photo: url("image.png");
+      --texture-photo: url("images/image.png");
       --anchor-scroll-padding: 5.25rem;
       --anchor-scroll-bottom: 5rem;
       --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
@@ -256,7 +256,7 @@
     /* ——— Hero ——— */
     .hero-wrap {
       position: relative;
-      min-height: Auto;
+      min-height: auto;
       display: flex;
       flex-direction: column;
       padding-top: 4.25rem;
@@ -303,6 +303,7 @@
       }
     }
     .hero-inner {
+   
       padding: 1rem 1rem 1rem;
       display: flex;
       flex-direction: column;
@@ -311,7 +312,7 @@
     }
     @media (min-width: 720px) {
       .hero-inner {
-        padding-top: 1.5rem;
+        padding-top: 1rem;
       }
     }
     /* Readable copy on top of full-bleed video */
@@ -806,6 +807,55 @@
       color: #fff;
     }
 
+    .mc-cart-ctrl {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.2rem;
+      flex-shrink: 0;
+    }
+    .mc-cart-ctrl button {
+      width: 28px;
+      height: 28px;
+      padding: 0;
+      border-radius: 8px;
+      border: 1px solid var(--line-strong);
+      background: var(--white);
+      color: var(--ink);
+      font-size: 1.05rem;
+      font-weight: 700;
+      line-height: 1;
+      cursor: pointer;
+      display: grid;
+      place-items: center;
+      transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+    }
+    .mc-cart-ctrl button:hover {
+      border-color: var(--accent);
+      background: rgba(196, 92, 74, 0.08);
+      color: var(--accent-rich);
+    }
+    .mc-cart-ctrl button:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 2px;
+    }
+    .mc-add {
+      background: linear-gradient(135deg, var(--maroon) 0%, var(--maroon-deep) 100%) !important;
+      border-color: transparent !important;
+      color: #fff !important;
+      font-size: 1.15rem;
+    }
+    .mc-add:hover {
+      filter: brightness(1.06);
+      color: #fff !important;
+    }
+    .mc-qty-num {
+      min-width: 1.1rem;
+      text-align: center;
+      font-size: 0.72rem;
+      font-weight: 800;
+      color: var(--accent-rich);
+    }
+
     /* ——— Heritage ——— */
     .heritage {
       padding: 3rem 1.1rem;
@@ -1045,6 +1095,172 @@
       align-items: center;
       gap: 0.65rem;
     }
+    .order-sticky-wrap {
+      position: relative;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem 0.65rem;
+      width: 100%;
+      max-width: 720px;
+    }
+    .cart-toggle {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      padding: 0.5rem 0.85rem;
+      border-radius: 999px;
+      border: 1px solid var(--line-strong);
+      background: var(--paper-2);
+      color: var(--ink);
+      font-family: var(--font-sans);
+      font-weight: 700;
+      font-size: 0.82rem;
+      cursor: pointer;
+      transition: background 0.2s ease, border-color 0.2s ease;
+    }
+    .cart-toggle:hover {
+      background: var(--white);
+      border-color: var(--accent);
+    }
+    .cart-toggle:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 2px;
+    }
+    .cart-count-badge {
+      display: inline-flex;
+      min-width: 1.35rem;
+      height: 1.35rem;
+      padding: 0 0.35rem;
+      align-items: center;
+      justify-content: center;
+      border-radius: 999px;
+      background: var(--accent);
+      color: #fff;
+      font-size: 0.72rem;
+      font-weight: 800;
+    }
+    .cart-count-badge.is-empty {
+      background: var(--ink-muted);
+    }
+    .rp-cart-panel {
+      position: absolute;
+      bottom: calc(100% + 0.45rem);
+      left: 50%;
+      transform: translateX(-50%);
+      width: min(100vw - 2rem, 400px);
+      max-height: min(52vh, 360px);
+      display: flex;
+      flex-direction: column;
+      background: var(--white);
+      border: 1px solid var(--line-strong);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow-md);
+      z-index: 70;
+      overflow: hidden;
+    }
+    .rp-cart-panel[hidden] {
+      display: none !important;
+    }
+    .rp-cart-panel-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.5rem;
+      padding: 0.65rem 0.75rem;
+      border-bottom: 1px solid var(--line);
+      background: var(--paper);
+    }
+    .rp-cart-panel-head strong {
+      font-size: 0.92rem;
+      color: var(--maroon-deep);
+    }
+    .rp-cart-close {
+      border: none;
+      background: transparent;
+      color: var(--accent);
+      font-weight: 700;
+      font-size: 0.78rem;
+      cursor: pointer;
+      padding: 0.25rem 0.4rem;
+      border-radius: 6px;
+    }
+    .rp-cart-close:hover {
+      background: rgba(196, 92, 74, 0.08);
+    }
+    .rp-cart-lines {
+      flex: 1;
+      overflow: auto;
+      padding: 0.4rem 0.5rem;
+      -webkit-overflow-scrolling: touch;
+    }
+    .rp-cart-line {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.5rem;
+      padding: 0.45rem 0.35rem;
+      border-bottom: 1px solid var(--line);
+      font-size: 0.82rem;
+    }
+    .rp-cart-line:last-child {
+      border-bottom: none;
+    }
+    .rp-cart-line-name {
+      flex: 1;
+      min-width: 0;
+      font-weight: 600;
+      color: var(--ink);
+    }
+    .rp-cart-line-ctrl {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.25rem;
+      flex-shrink: 0;
+    }
+    .rp-cart-line-ctrl button {
+      width: 26px;
+      height: 26px;
+      border-radius: 6px;
+      border: 1px solid var(--line);
+      background: var(--paper-2);
+      font-weight: 700;
+      cursor: pointer;
+      line-height: 1;
+    }
+    .rp-cart-line-ctrl button:hover {
+      border-color: var(--accent);
+      color: var(--accent-rich);
+    }
+    .rp-cart-line-q {
+      min-width: 1.25rem;
+      text-align: center;
+      font-weight: 800;
+      font-size: 0.78rem;
+      color: var(--accent-rich);
+    }
+    .rp-cart-clear {
+      margin: 0.35rem 0.5rem 0.55rem;
+      padding: 0.4rem;
+      border-radius: 8px;
+      border: 1px dashed var(--line-strong);
+      background: transparent;
+      color: var(--ink-muted);
+      font-size: 0.76rem;
+      font-weight: 600;
+      cursor: pointer;
+    }
+    .rp-cart-clear:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+    .rp-cart-empty {
+      padding: 1rem 0.75rem;
+      text-align: center;
+      font-size: 0.82rem;
+      color: var(--ink-muted);
+    }
     .order-sticky a {
       display: inline-flex;
       align-items: center;
@@ -1217,7 +1433,7 @@
     <nav class="nav-inner" aria-label="Main">
       <a href="#top" class="nav-brand" aria-label="Rathi Pedewala home">
         <span class="nav-logo-wrap">
-          <img class="nav-logo" src="logo-wordmark.png" alt="" width="180" height="40" onerror="this.src='logo-devanagari.png'" />
+          <img class="nav-logo" src="images/logo-wordmark.png" alt="" width="180" height="40" onerror="this.src='images/logo-devanagari.png'" />
         </span>
         <span class="nav-title">
           <span class="nav-title-main"><span class="nav-title-rathi"></span> <span class="nav-title-ped">Rathi Pedewala</span></span>
@@ -1245,7 +1461,7 @@
           loop
           playsinline
           preload="metadata"
-          poster="image.png"
+          poster="images/image.png"
         ></video>
         <div class="hero-video-scrim"></div>
       </div>
@@ -1270,12 +1486,12 @@
             </div>
           </div>
           <div class="hero-cta-row">
-            <a class="btn-solid" href="https://wa.me/917242450049?text=Hi%20Rathi%20Pedewala%2C%20I%27d%20like%20to%20place%20an%20order." rel="noopener noreferrer" target="_blank">Order on WhatsApp</a>
+            <a class="btn-solid wa-order-dynamic" href="https://wa.me/917242450049?text=Hi%20Rathi%20Pedewala%2C%20I%27d%20like%20to%20place%20an%20order." rel="noopener noreferrer" target="_blank">Order on WhatsApp</a>
             <a class="btn-outline-light" href="#menu">View menu</a>
           </div>
           <br>
           <div class="hero-brand-row">
-            <img class="hero-seal" src="logo-seal-mandana.png" alt="" width="72" height="72" decoding="async" onerror="this.style.visibility='hidden';this.style.width='0';" />
+            <img class="hero-seal" src="images/logo-seal-mandana.png" alt="" width="72" height="72" decoding="async" onerror="this.style.visibility='hidden';this.style.width='0';" />
             <div class="hero-brand-stack">
               <div class="hero-legacy-strip">
                 <span class="hero-since">Since 1981</span>
@@ -1299,7 +1515,7 @@
       <div class="menu-stack reveal">
         <div class="section-head">
           <h2 id="menu-h">The menu</h2>
-          <p>Tap <strong>Order</strong> to WhatsApp the item name. Photos are <strong>representative</strong> (stock by category) — your tray may vary. Prices: confirm on WhatsApp.</p>
+          <p>Use <strong>+</strong> on each item to build your cart, then <strong>Order on WhatsApp</strong> to send your full list. Photos are <strong>representative</strong> (stock by category) — your tray may vary. Prices: confirm on WhatsApp.</p>
         </div>
         <div class="tab-scroll" id="menu-tabs" role="tablist" aria-label="Menu category"></div>
         <div class="menu-compact-grid" id="menu-grid"></div>
@@ -1402,11 +1618,24 @@
   </footer>
 
   <div class="order-sticky">
-    <span class="hint">Fresh batches —</span>
-    <a href="https://wa.me/917242450049?text=Hi%20Rathi%20Pedewala%2C%20I%27d%20like%20to%20place%20an%20order." rel="noopener noreferrer" target="_blank">Order via WhatsApp</a>
+    <div class="order-sticky-wrap">
+      <span class="hint">Fresh batches —</span>
+      <button type="button" class="cart-toggle" id="rp-cart-toggle" aria-expanded="false" aria-controls="rp-cart-panel">
+        Cart <span class="cart-count-badge is-empty" id="rp-cart-count-chip" aria-live="polite">0</span>
+      </button>
+      <div id="rp-cart-panel" class="rp-cart-panel" role="dialog" aria-labelledby="rp-cart-title" hidden>
+        <div class="rp-cart-panel-head">
+          <strong id="rp-cart-title">Your cart</strong>
+          <button type="button" class="rp-cart-close" id="rp-cart-close">Close</button>
+        </div>
+        <div id="rp-cart-lines" class="rp-cart-lines"></div>
+        <button type="button" class="rp-cart-clear" id="rp-cart-clear" hidden>Clear cart</button>
+      </div>
+      <a class="wa-order-dynamic" href="https://wa.me/917242450049?text=Hi%20Rathi%20Pedewala%2C%20I%27d%20like%20to%20place%20an%20order." rel="noopener noreferrer" target="_blank">Order via WhatsApp</a>
+    </div>
   </div>
 
-  <a class="wa-float" href="https://wa.me/917242450049?text=Hi%20Rathi%20Pedewala%2C%20I%27d%20like%20to%20place%20an%20order." rel="noopener noreferrer" target="_blank" aria-label="WhatsApp order">
+  <a class="wa-float wa-order-dynamic" href="https://wa.me/917242450049?text=Hi%20Rathi%20Pedewala%2C%20I%27d%20like%20to%20place%20an%20order." rel="noopener noreferrer" target="_blank" aria-label="WhatsApp order">
     <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.435 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
   </a>
 
@@ -1457,6 +1686,278 @@
       });
     })();
 
+    (function rpCart() {
+      var PHONE = "917242450049";
+      var LS_KEY = "rp-cart-v1";
+      var cart = {};
+
+      function load() {
+        try {
+          var raw = localStorage.getItem(LS_KEY);
+          cart = raw ? JSON.parse(raw) : {};
+          if (!cart || typeof cart !== "object") cart = {};
+        } catch (e) {
+          cart = {};
+        }
+      }
+
+      function persist() {
+        try {
+          localStorage.setItem(LS_KEY, JSON.stringify(cart));
+        } catch (e) {}
+      }
+
+      function qtyFor(index) {
+        var q = +cart[String(index)];
+        return q > 0 ? q : 0;
+      }
+
+      function setQty(index, q) {
+        var k = String(index);
+        if (q <= 0) delete cart[k];
+        else cart[k] = q;
+        persist();
+        syncUI();
+      }
+
+      function totalPieces() {
+        return Object.keys(cart).reduce(function (sum, k) {
+          return sum + (+cart[k] || 0);
+        }, 0);
+      }
+
+      function sortedEntries() {
+        return Object.keys(cart)
+          .map(function (k) {
+            return { i: +k, q: +cart[k] || 0 };
+          })
+          .filter(function (e) {
+            return e.q > 0;
+          })
+          .sort(function (a, b) {
+            return a.i - b.i;
+          });
+      }
+
+      function lineLabel(items, index) {
+        var it = items[index];
+        if (!it) return "Item #" + index;
+        var bits = [it.n];
+        if (it.unit) bits.push(it.unit);
+        else if (it.w) bits.push(it.w);
+        if (it.unit && it.w && it.w !== it.unit) bits.push(it.w);
+        if (it.p) bits.push("₹" + it.p);
+        return bits.join(" · ");
+      }
+
+      /* One array element = one line in WhatsApp. Join with %0A in the URL so each product stays on its own line. */
+      function encodeLinesForWa(lines) {
+        return lines
+          .map(function (ln) {
+            return encodeURIComponent(ln);
+          })
+          .join("%0A");
+      }
+
+      function waHref(items) {
+        var maxEnc = 1750;
+        var suffixLine =
+          "…(list continues — first part only; I'll send the remaining items next.)";
+        var entries = sortedEntries();
+        var emptyLines = [
+          "Hi Rathi Pedewala,",
+          "",
+          "I'd like to place an order.",
+          "",
+          "Please share availability and price.",
+          "",
+          "Thank you!"
+        ];
+        if (!entries.length) {
+          return "https://wa.me/" + PHONE + "?text=" + encodeLinesForWa(emptyLines);
+        }
+        var head = ["Hi Rathi Pedewala,", "", "I'd like to order:", ""];
+        var foot = [
+          "",
+          "Please confirm availability, quantities, and price.",
+          "",
+          "Thank you!"
+        ];
+        var count = entries.length;
+        var enc = "";
+        while (count >= 0) {
+          var productLines = entries.slice(0, count).map(function (L, idx) {
+            return String(idx + 1) + ". " + lineLabel(items, L.i) + " × " + L.q;
+          });
+          var lines = head.concat(productLines);
+          if (count < entries.length) {
+            lines.push("");
+            lines.push(suffixLine);
+          }
+          lines = lines.concat(foot);
+          enc = encodeLinesForWa(lines);
+          if (enc.length <= maxEnc) break;
+          count--;
+        }
+        if (enc.length > maxEnc) {
+          enc = encodeLinesForWa([
+            "Hi Rathi Pedewala,",
+            "",
+            "I'd like to place a large order — please reply so I can send my full item list."
+          ]);
+        }
+        return "https://wa.me/" + PHONE + "?text=" + enc;
+      }
+
+      function renderCartPanelContents() {
+        var linesEl = document.getElementById("rp-cart-lines");
+        var clearBtn = document.getElementById("rp-cart-clear");
+        if (!linesEl) return;
+        var items = window.RP_MENU || [];
+        var entries = sortedEntries();
+        if (!entries.length) {
+          linesEl.innerHTML =
+            '<p class="rp-cart-empty">No items yet. Tap <strong>+</strong> on the menu to add items.</p>';
+          if (clearBtn) clearBtn.hidden = true;
+          return;
+        }
+        if (clearBtn) clearBtn.hidden = false;
+        linesEl.textContent = "";
+        entries.forEach(function (L) {
+          var row = document.createElement("div");
+          row.className = "rp-cart-line";
+          var name = document.createElement("span");
+          name.className = "rp-cart-line-name";
+          name.textContent = lineLabel(items, L.i);
+          var ctrl = document.createElement("div");
+          ctrl.className = "rp-cart-line-ctrl";
+          var bMinus = document.createElement("button");
+          bMinus.type = "button";
+          bMinus.textContent = "−";
+          bMinus.setAttribute("aria-label", "Remove one");
+          bMinus.setAttribute("data-rp-ix", String(L.i));
+          bMinus.setAttribute("data-rp-d", "1");
+          var qSpan = document.createElement("span");
+          qSpan.className = "rp-cart-line-q";
+          qSpan.textContent = String(L.q);
+          var bPlus = document.createElement("button");
+          bPlus.type = "button";
+          bPlus.textContent = "+";
+          bPlus.setAttribute("aria-label", "Add one");
+          bPlus.setAttribute("data-rp-ix", String(L.i));
+          bPlus.setAttribute("data-rp-d", "-1");
+          ctrl.appendChild(bMinus);
+          ctrl.appendChild(qSpan);
+          ctrl.appendChild(bPlus);
+          row.appendChild(name);
+          row.appendChild(ctrl);
+          linesEl.appendChild(row);
+        });
+      }
+
+      function syncUI() {
+        var items = window.RP_MENU || [];
+        var n = totalPieces();
+        document.querySelectorAll(".cart-count-badge").forEach(function (el) {
+          el.textContent = String(n);
+          el.classList.toggle("is-empty", n === 0);
+        });
+        var href = waHref(items);
+        document.querySelectorAll("a.wa-order-dynamic").forEach(function (a) {
+          a.href = href;
+        });
+        document.querySelectorAll(".mc-card[data-item-index]").forEach(function (card) {
+          var ix = +card.getAttribute("data-item-index");
+          var q = qtyFor(ix);
+          var qtyEl = card.querySelector(".mc-qty-num");
+          var minusBtn = card.querySelector(".mc-minus");
+          if (qtyEl) qtyEl.textContent = q > 0 ? String(q) : "";
+          if (minusBtn) minusBtn.hidden = q === 0;
+        });
+        var panel = document.getElementById("rp-cart-panel");
+        if (panel && !panel.hasAttribute("hidden")) renderCartPanelContents();
+      }
+
+      window.rpCartAdd = function (index) {
+        setQty(index, qtyFor(index) + 1);
+      };
+      window.rpCartDec = function (index) {
+        setQty(index, qtyFor(index) - 1);
+      };
+      window.rpCartClear = function () {
+        cart = {};
+        persist();
+        syncUI();
+      };
+
+      window.rpCartSyncUI = syncUI;
+
+      load();
+
+      var grid = document.getElementById("menu-grid");
+      if (grid) {
+        grid.addEventListener("click", function (e) {
+          var add = e.target.closest(".mc-add");
+          var minus = e.target.closest(".mc-minus");
+          if (!add && !minus) return;
+          var card = e.target.closest(".mc-card[data-item-index]");
+          if (!card) return;
+          var ix = +card.getAttribute("data-item-index");
+          if (add) window.rpCartAdd(ix);
+          if (minus) window.rpCartDec(ix);
+        });
+      }
+
+      var linesHost = document.getElementById("rp-cart-lines");
+      if (linesHost) {
+        linesHost.addEventListener("click", function (e) {
+          var btn = e.target.closest("button[data-rp-ix]");
+          if (!btn || !linesHost.contains(btn)) return;
+          var ix = +btn.getAttribute("data-rp-ix");
+          if (btn.getAttribute("data-rp-d") === "1") window.rpCartDec(ix);
+          else window.rpCartAdd(ix);
+        });
+      }
+
+      var toggle = document.getElementById("rp-cart-toggle");
+      var panel = document.getElementById("rp-cart-panel");
+      var closeBtn = document.getElementById("rp-cart-close");
+      var clearBtn = document.getElementById("rp-cart-clear");
+
+      function setPanelOpen(open) {
+        if (!panel || !toggle) return;
+        if (open) {
+          panel.removeAttribute("hidden");
+          toggle.setAttribute("aria-expanded", "true");
+          renderCartPanelContents();
+        } else {
+          panel.setAttribute("hidden", "");
+          toggle.setAttribute("aria-expanded", "false");
+        }
+      }
+
+      if (toggle && panel) {
+        toggle.addEventListener("click", function () {
+          setPanelOpen(panel.hasAttribute("hidden"));
+        });
+      }
+      if (closeBtn) closeBtn.addEventListener("click", function () {
+        setPanelOpen(false);
+      });
+      if (clearBtn) {
+        clearBtn.addEventListener("click", function () {
+          window.rpCartClear();
+        });
+      }
+
+      document.addEventListener("keydown", function (e) {
+        if (e.key !== "Escape" || !panel || panel.hasAttribute("hidden")) return;
+        setPanelOpen(false);
+      });
+
+      syncUI();
+    })();
+
     (function renderMenu() {
       var tabs = document.getElementById("menu-tabs");
       var grid = document.getElementById("menu-grid");
@@ -1464,11 +1965,6 @@
       var items = window.RP_MENU || [];
       var pickPhoto = window.rpPickMenuPhoto || function () { return ""; };
       var active = "all";
-
-      function waUrl(name) {
-        var msg = "Hi Rathi Pedewala, I'd like to order: " + name;
-        return "https://wa.me/917242450049?text=" + encodeURIComponent(msg);
-      }
 
       function initialFrom(name) {
         var m = name.match(/[A-Za-z0-9\u0900-\u097F]/);
@@ -1495,11 +1991,18 @@
         tabs.appendChild(b);
       });
 
-      items.forEach(function (it) {
+      items.forEach(function (it, idx) {
         var card = document.createElement("article");
         card.className = "mc-card";
         card.setAttribute("data-c", it.c);
-        var titleTip = it.n + (it.w ? " · " + it.w : "") + (it.p ? " · ₹" + it.p : " · Ask price on WhatsApp");
+        card.setAttribute("data-item-index", String(idx));
+        var subParts = [];
+        if (it.unit) subParts.push(it.unit);
+        if (it.w && it.w !== it.unit) subParts.push(it.w);
+        var titleTip =
+          it.n +
+          (subParts.length ? " · " + subParts.join(" · ") : "") +
+          (it.p ? " · ₹" + it.p : "");
         function escAttr(t) {
           return String(t).replace(/&/g, "&amp;").replace(/"/g, "&quot;").replace(/</g, "&lt;");
         }
@@ -1507,7 +2010,7 @@
           return String(t).replace(/&/g, "&amp;").replace(/</g, "&lt;");
         }
 
-        var priceText = it.p ? "₹" + it.p : "—";
+        var priceText = "₹" + (it.p != null && it.p !== "" ? it.p : "100");
         var photo = it.u || pickPhoto(it.c, it.n);
         var imgHtml = photo
           ? '<img class="mc-photo" src="' + escAttr(photo) + '" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer">'
@@ -1527,11 +2030,19 @@
           '<div class="mc-row-bottom">' +
           "<h3 class=\"mc-name\">" +
           escHtml(it.n) +
-          (it.w ? ' <span style="opacity:.55;font-weight:500;font-size:0.68rem;">· ' + escHtml(it.w) + "</span>" : "") +
+          (function () {
+            var bits = [];
+            if (it.unit) bits.push(it.unit);
+            if (it.w && it.w !== it.unit) bits.push(it.w);
+            if (!bits.length) return "";
+            return ' <span style="opacity:.55;font-weight:500;font-size:0.68rem;">· ' + escHtml(bits.join(" · ")) + "</span>";
+          })() +
           "</h3>" +
-          '<a class="mc-order" href="' +
-          waUrl(it.n + (it.w ? " (" + it.w + ")" : "")) +
-          '" rel="noopener noreferrer" target="_blank">Order</a></div>';
+          '<div class="mc-cart-ctrl">' +
+          '<button type="button" class="mc-minus" hidden aria-label="Remove one from cart">−</button>' +
+          '<span class="mc-qty-num" aria-live="polite"></span>' +
+          '<button type="button" class="mc-add" aria-label="Add to cart">+</button>' +
+          "</div></div>";
 
         grid.appendChild(card);
         var visEl = card.querySelector(".mc-visual");
@@ -1543,6 +2054,7 @@
           });
         }
       });
+      if (typeof window.rpCartSyncUI === "function") window.rpCartSyncUI();
     })();
 
     (function scrollReveal() {
